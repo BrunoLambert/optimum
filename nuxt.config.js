@@ -30,12 +30,14 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/auth'
+    '@/plugins/auth',
+    '@/plugins/charts'
   ],
   /*
   ** Nuxt.js dev-modules
