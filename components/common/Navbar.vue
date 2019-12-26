@@ -2,7 +2,7 @@
   <v-app-bar color="primary" max-height="60" height="60" class="app-bar mb-5">
     <v-toolbar-title class="app-bar-title">
       <h1 class="appbar-logo white--text">
-        <img src="/Judgemi.png" alt="Judgemi" height="50px" class="mt-4" />
+        <img src="/Judgemi.png" alt="Judgemi" height="50px" class="mt-4">
       </h1>
     </v-toolbar-title>
 

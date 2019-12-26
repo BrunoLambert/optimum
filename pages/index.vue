@@ -1,6 +1,7 @@
 <template>
-  <v-layout row wrap class="full-layout">
-    <v-flex xs12 md8 xl4>
+  <v-layout row wrap class="full-layout primary">
+    <v-flex xs12 md8 xl4 class="layout-flex">
+      <img src="/Judgemi.png" alt="Judgemi" height="50px" class="mb-5">
       <v-card>
         <v-card-title primary-title class="primary--text">
           Login
@@ -11,7 +12,14 @@
           </v-alert>
           <v-text-field v-model="login.email" label="E-mail" name="email" />
           <v-text-field v-model="login.password" label="Senha" name="password" type="password" />
-          <v-btn @click="tryLogin" color="primary" block depressed>
+          <v-btn
+            @click="tryLogin"
+            :loading="loading"
+            :disabled="loading"
+            color="primary"
+            block
+            depressed
+          >
             Entrar
           </v-btn>
         </v-card-text>
@@ -31,15 +39,19 @@ export default {
       email: '',
       password: ''
     },
-    error: null
+    error: null,
+    loading: false
   }),
   methods: {
-    tryLogin () {
-      this.$store.dispatch('auth/tryLogin', this.login).then((res) => {
+    async tryLogin () {
+      this.loading = true
+      try {
+        await this.$store.dispatch('auth/tryLogin', this.login)
         this.$router.push('/inicio')
-      }).catch((err) => {
+      } catch (err) {
         this.error = err.message
-      })
+      }
+      this.loading = false
     }
   }
 }
@@ -52,5 +64,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.layout-flex {
+  text-align: center;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <v-layout row wrap justify-center class="normal-layout">
     <v-flex xs12 md8>
-      <h2 class="primary--text">Bem vindo, {{ user.name }}!</h2>
+      <h2 class="primary--text">
+        Bem vindo, {{ user.name }}!
+      </h2>
       <v-tabs v-model="tab" color="primary" slider-color="primary" class="mt-5">
         <v-tab v-for="tab in tabs" :key="tab">
           {{ tab }}
@@ -39,7 +41,8 @@ export default {
       'Ativos e encerrados',
       'Estatística por estado',
       'Estatística por fase'
-    ]
+    ],
+    loading: false
   }),
   computed: {
     user () {
@@ -81,7 +84,20 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('process/getProcesses')
+    this.getProcesses()
+  },
+  methods: {
+    async getProcesses () {
+      this.$store.commit('loader/turnOn')
+      setTimeout(() => { // Simular um loader mais demorado
+        this.$store.commit('loader/turnOff')
+      }, 2000)
+      try {
+        await this.$store.dispatch('process/getProcesses')
+      } catch (error) {
+        alert('Houve um erro com a comunicação com a API.')
+      }
+    }
   }
 }
 </script>

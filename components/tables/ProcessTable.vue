@@ -10,7 +10,20 @@
         :headers="tableHeaders"
         :items="processes"
         class="elevation-1 pie-table"
-      />
+        no-data-text="Nehnum processo carregado ainda..."
+      >
+        <template v-slot:item.active="{ item }">
+          <v-icon v-if="item.active" color="success">
+            thumb_up
+          </v-icon>
+          <v-icon v-else color="error">
+            thumb_down
+          </v-icon>
+        </template>
+        <template v-slot:item.value="{ item }">
+          {{ item.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
+        </template>
+      </v-data-table>
     </v-flex>
   </v-layout>
 </template>
