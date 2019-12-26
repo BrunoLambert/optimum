@@ -23,6 +23,9 @@
 <script>
 export default {
   layout: 'login',
+  head: {
+    title: 'Login - Judgemi'
+  },
   data: () => ({
     login: {
       email: '',

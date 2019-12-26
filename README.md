@@ -1,6 +1,6 @@
-# Optimum
+# Judgemi
 
-> My classy Nuxt.js project
+> Plataforma digital para gerencia de processos
 
 ## Build Setup
 
@@ -20,3 +20,23 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Login Options
+
+```
+  {
+    "name": "Velva Conn",
+    "password": "bzMutVqkVkHkmx5",
+    "email": "Velda.Ziemann73@yahoo.com"
+  },
+  {
+    "name": "Baylee Wisozk",
+    "password": "N5TrVD0ZHt3PiIi",
+    "email": "Amelie54@hotmail.com"
+  },
+  {
+    "name": "Alfreda Zboncak",
+    "password": "cU1fkQhqw1eJMYs",
+    "email": "Desiree_Kuhic52@yahoo.com"
+  }
+```

@@ -18,7 +18,7 @@ export const actions = {
         ...r,
         fase: Faker.random.arrayElement(['Conhecimento', 'Recursal', 'Execução']),
         state: Faker.random.arrayElement(['MG', 'SP', 'RJ', 'RS', 'SC', 'BA']),
-        createdAt: new Date(r.createdAt).toLocaleDateString(),
+        createdAt: Faker.date.past(1).toLocaleDateString(),
         publishedAt: new Date(r.publishedAt).toLocaleDateString(),
         finishedAt: new Date(r.finishedAt).toLocaleDateString()
       })))

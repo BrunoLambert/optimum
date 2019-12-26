@@ -1,8 +1,8 @@
 <template>
-  <v-app-bar color="black" max-height="75" class="app-bar mb-5">
-    <v-toolbar-title>
+  <v-app-bar color="primary" max-height="60" height="60" class="app-bar mb-5">
+    <v-toolbar-title class="app-bar-title">
       <h1 class="appbar-logo white--text">
-        Juridis
+        <img src="/Judgemi.png" alt="Judgemi" height="50px" class="mt-4" />
       </h1>
     </v-toolbar-title>
 
@@ -38,5 +38,10 @@ export default {
 }
 .menu-item {
   min-width: 200px;
+}
+.app-bar-title {
+  display: flex;
+  height: 100%;
+  align-items: center;
 }
 </style>

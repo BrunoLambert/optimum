@@ -11,21 +11,18 @@
       <v-checkbox v-model="filters" :value="false" label="Encerrados" />
     </v-flex>
     <v-flex xs12 mt-4>
-      <v-data-table
-        :headers="tableHeaders"
-        :items="dataForTable"
-        hide-default-footer
-        class="elevation-1 pie-table"
-      />
+      <process-table :processes="dataForTable" />
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import { Chart } from 'highcharts-vue'
+import ProcessTable from '~/components/tables/ProcessTable'
 export default {
   components: {
-    Chart
+    Chart,
+    ProcessTable
   },
   props: {
     data: {
@@ -34,44 +31,7 @@ export default {
     }
   },
   data: () => ({
-    filters: [],
-    tableHeaders: [
-      {
-        text: 'ID',
-        value: 'id',
-        sortable: false
-      },
-      {
-        text: 'Número',
-        value: 'number',
-        sortable: false
-      },
-      {
-        text: 'Ativo',
-        value: 'active',
-        sortable: false
-      },
-      {
-        text: 'Publicado em',
-        value: 'publishedAt',
-        sortable: false
-      },
-      {
-        text: 'Encerramento',
-        value: 'finishedAt',
-        sortable: false
-      },
-      {
-        text: 'Valor',
-        value: 'value',
-        sortable: false
-      },
-      {
-        text: 'Estado',
-        value: 'state',
-        sortable: false
-      }
-    ]
+    filters: []
   }),
   computed: {
     dataFiltered () {

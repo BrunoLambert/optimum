@@ -1,7 +1,7 @@
 <template>
   <v-layout row wrap justify-center class="normal-layout">
     <v-flex xs12 md8>
-      <h2>Bem vindo, {{ user.name }}!</h2>
+      <h2 class="primary--text">Bem vindo, {{ user.name }}!</h2>
       <v-tabs v-model="tab" color="primary" slider-color="primary" class="mt-5">
         <v-tab v-for="tab in tabs" :key="tab">
           {{ tab }}
@@ -13,7 +13,7 @@
           <bar-chart :data="barChartData" />
         </v-tab-item>
         <v-tab-item :value="2" class="py-5">
-          dos
+          <stacked-chart :data="stackChartData" />
         </v-tab-item>
       </v-tabs>
     </v-flex>
@@ -21,12 +21,17 @@
 </template>
 
 <script>
-import PieChart from '~/components/charts/Pie.vue'
-import BarChart from '~/components/charts/Bar.vue'
+import PieChart from '~/components/charts/Pie'
+import BarChart from '~/components/charts/Bar'
+import StackedChart from '~/components/charts/Stacked'
 export default {
+  head: {
+    title: 'Início - Judgemi'
+  },
   components: {
     PieChart,
-    BarChart
+    BarChart,
+    StackedChart
   },
   data: () => ({
     tab: 0,
@@ -64,7 +69,19 @@ export default {
         }
       })
       return barData
+    },
+    stackChartData () {
+      // eslint-disable-next-line
+      let stackedData = [...Array(12)].map(n => [])
+      const yearProcesses = this.processes.filter(p => (new Date(p.createdAt).getFullYear()) === 2019)
+      stackedData.forEach((m, index) => {
+        stackedData[index] = yearProcesses.filter(p => (new Date(p.createdAt).getMonth()) === index)
+      })
+      return stackedData
     }
+  },
+  mounted () {
+    this.$store.dispatch('process/getProcesses')
   }
 }
 </script>

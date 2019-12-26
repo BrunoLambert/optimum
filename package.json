@@ -1,7 +1,7 @@
 {
-  "name": "Optimum",
+  "name": "judgemi",
   "version": "1.0.0",
-  "description": "My classy Nuxt.js project",
+  "description": "Plataforma digital para gerencia de processos.",
   "author": "Bruno Lambert",
   "private": true,
   "scripts": {

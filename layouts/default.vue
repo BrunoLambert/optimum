@@ -3,7 +3,7 @@
     <Navbar />
     <nuxt />
     <div class="mb-8" />
-    <v-footer fixed app>
+    <v-footer fixed app class="secondary white--text text-xs-center">
       <span>&copy; 2019</span>
     </v-footer>
   </v-app>

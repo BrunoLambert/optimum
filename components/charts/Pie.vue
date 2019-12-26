@@ -10,21 +10,18 @@
       <v-checkbox v-model="filters" label="Execução" value="Execução" />
     </v-flex>
     <v-flex xs12 mt-4>
-      <v-data-table
-        :headers="tableHeaders"
-        :items="[...actives, ...inactives]"
-        hide-default-footer
-        class="elevation-1 pie-table"
-      />
+      <process-table :processes="[...actives, ...inactives]" />
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import { Chart } from 'highcharts-vue'
+import ProcessTable from '~/components/tables/ProcessTable'
 export default {
   components: {
-    Chart
+    Chart,
+    ProcessTable
   },
   props: {
     data: {
@@ -103,9 +100,6 @@ export default {
         }
       }
     }
-  },
-  mounted () {
-    this.$store.dispatch('process/getProcesses')
   }
 }
 </script>
