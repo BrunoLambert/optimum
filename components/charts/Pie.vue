@@ -13,7 +13,7 @@
       <v-data-table
         :headers="tableHeaders"
         :items="[...actives, ...inactives]"
-        hide-actions
+        hide-default-footer
         class="elevation-1 pie-table"
       />
     </v-flex>

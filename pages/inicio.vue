@@ -10,7 +10,7 @@
           <pie-chart :data="pieChartData" />
         </v-tab-item>
         <v-tab-item :value="1" class="py-5">
-          uno
+          <bar-chart :data="barChartData" />
         </v-tab-item>
         <v-tab-item :value="2" class="py-5">
           dos
@@ -22,9 +22,11 @@
 
 <script>
 import PieChart from '~/components/charts/Pie.vue'
+import BarChart from '~/components/charts/Bar.vue'
 export default {
   components: {
-    PieChart
+    PieChart,
+    BarChart
   },
   data: () => ({
     tab: 0,
@@ -45,6 +47,23 @@ export default {
       const actives = this.processes.filter(p => p.active)
       const inactives = this.processes.filter(p => !p.active)
       return { actives, inactives }
+    },
+    barChartData () {
+      const states = this.processes.map(p => p.state)
+      // eslint-disable-next-line
+      let barData = [];
+      // eslint-disable-next-line
+      let usedStates = []
+      states.forEach((state) => {
+        if (!usedStates.includes(state)) {
+          usedStates.push(state)
+          barData.push({
+            name: state,
+            data: this.processes.filter(p => p.state === state)
+          })
+        }
+      })
+      return barData
     }
   }
 }

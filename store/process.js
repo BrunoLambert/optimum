@@ -17,6 +17,7 @@ export const actions = {
       commit('setProcesses', resp.map(r => ({
         ...r,
         fase: Faker.random.arrayElement(['Conhecimento', 'Recursal', 'Execução']),
+        state: Faker.random.arrayElement(['MG', 'SP', 'RJ', 'RS', 'SC', 'BA']),
         createdAt: new Date(r.createdAt).toLocaleDateString(),
         publishedAt: new Date(r.publishedAt).toLocaleDateString(),
         finishedAt: new Date(r.finishedAt).toLocaleDateString()
